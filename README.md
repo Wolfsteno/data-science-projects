@@ -9,15 +9,21 @@ Este tutorial te guiará a través de los siguientes pasos:
 5. **Hacer push de la nueva rama**
 6. **Solicitar revisión y hacer merge a `main`**
 7. **Cerrar la rama**
-8. **Actualizar la rama `main` antes de comenzar nuevos trabajos**
+8. **Actualizar la rama `main` antes de comenzar nuevos trabajos** (Despues de instalarlo reinicia visual code)
 
 ## Prerrequisitos
 
 - **Git Instalado**: Asegúrate de tener Git instalado en tu máquina. Puedes descargarlo desde [la página oficial de Git](https://git-scm.com/downloads).
 - **Acceso al Repositorio**: Debes tener los permisos necesarios para clonar y subir al repositorio.
 - **Cuenta de GitHub**: Este tutorial asume que utilizas GitHub, pero los pasos son similares para otros servicios de hosting de Git.
+- Instala el CLI de GitHub para manejar tu cuenta mas facilmente y el acceso al repositorio **https://cli.github.com/**
 
 ---
+
+## Logea a tu cuenta de GitHub con el siguiente comando:
+```bash
+gh auth login
+```
 
 ## Paso 1: Clonar el Repositorio
 
@@ -58,10 +64,15 @@ Crear una nueva rama te permite trabajar en cambios específicos sin afectar la 
 
 Ten cuidado y primero copy el siguiente comando en un bloc de notas para escribir debidamente el nombre de la branch (rama)
 
-### Comando:
+### EJEMPLOS - EDITA ANTES DE EJECUTAR:
 
 ```bash
 git checkout -b acarrasco/Edicion-del-archivo-README.md
+```
+
+Publica tu rama (branch)
+```bash
+git push origin acarrasco/Edicion-del-archivo-README.md
 ```
 
 ---
