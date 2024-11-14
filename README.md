@@ -29,6 +29,11 @@ Clonar un repositorio crea una copia local del repositorio remoto en tu máquina
 git clone https://github.com/Wolfsteno/data-science-projects.git
 ```
 
+Y accede a la carpeta local
+```cmd
+cd ./data-science-projects
+```
+
 ### Después de Clonar:
 
 Se creará un nuevo directorio llamado `data-science-projects` en tu directorio actual, conteniendo todos los archivos del repositorio.
@@ -47,21 +52,23 @@ git pull origin main
 
 ---
 
-## Paso 3: Crear una Nueva Rama Basada en tu Nombre y Primer Apellido
+## Paso 3: Crear una Nueva Rama Basada en tu Nombre y Primer Apellido seguido del proposito de la rama
 
-Crear una nueva rama te permite trabajar en cambios específicos sin afectar la rama principal. En mi caso, sería "acarrasco" porque mi nombre es Álvaro Carrasco.
+Crear una nueva rama te permite trabajar en cambios específicos sin afectar la rama principal. En mi caso, sería "acarrasco" porque mi nombre es Álvaro Carrasco. <strong>No puede contener espacios.</strong> <br>
+
+Ten cuidado y primero copy el siguiente comando en un bloc de notas para escribir debidamente el nombre de la branch (rama)
 
 ### Comando:
 
 ```bash
-git checkout -b acarrasco/Eliminacion-de-nulos-hecha
+git checkout -b acarrasco/Edicion-del-archivo-README.md
 ```
 
 ---
 
 ## Paso 4: Realizar Cambios en los Archivos
 
-Realiza los cambios necesarios en tu proyecto. Por ejemplo, eliminar valores nulos de un conjunto de datos. Cuando tengas los avances listos, continúa al siguiente paso.
+Realiza los cambios necesarios en tu proyecto. Por ejemplo, editar el archivo README.md o eliminar valores nulos de un conjunto de datos. Cuando tengas los avances / cambios listos, continúa al siguiente paso.
 
 ---
 
