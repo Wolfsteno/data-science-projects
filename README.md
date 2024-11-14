@@ -1,50 +1,39 @@
-# Git: Clonar un Repositorio, Gestionar Ramas y Subir Código
+# Git: Clonar un Repositorio, Editar el README y Subir Cambios
 
-Este tutorial te guiará a través de los siguientes pasos:
+Este tutorial te muestra cómo clonar un repositorio, editar el archivo `README.md`, y subir los cambios mediante una Pull Request (PR).
 
-1. **Clonar un repositorio Git**
-2. **Actualizar el repositorio local**
-3. **Crear una nueva rama**
-4. **Realizar cambios en los archivos**
-5. **Hacer push de la nueva rama**
-6. **Solicitar revisión y hacer merge a `main`**
-7. **Cerrar la rama**
-8. **Actualizar la rama `main` antes de comenzar nuevos trabajos**
+---
 
 ## Prerrequisitos
 
-- **Git Instalado**: Asegúrate de tener Git instalado en tu máquina. Puedes descargarlo desde [la página oficial de Git](https://git-scm.com/downloads).
-- **Acceso al Repositorio**: Debes tener los permisos necesarios para clonar y subir al repositorio.
-- **Cuenta de GitHub**: Este tutorial asume que utilizas GitHub, pero los pasos son similares para otros servicios de hosting de Git.
+- **Git Instalado**: [Descargar](https://git-scm.com/downloads)
+- **Acceso a Repositorio GitHub**
+- **GitHub CLI**: [Descargar](https://cli.github.com/)
 
 ---
 
-## Paso 1: Clonar el Repositorio
+## Iniciar Sesión en GitHub
 
-Clonar un repositorio crea una copia local del repositorio remoto en tu máquina.
+Autentícate con GitHub CLI:
 
-### Comando:
+```bash
+gh auth login
+```
+
+---
+
+## 1. Clonar el Repositorio
 
 ```bash
 git clone https://github.com/Wolfsteno/data-science-projects.git
+cd data-science-projects
 ```
-
-Y accede a la carpeta local
-```cmd
-cd ./data-science-projects
-```
-
-### Después de Clonar:
-
-Se creará un nuevo directorio llamado `data-science-projects` en tu directorio actual, conteniendo todos los archivos del repositorio.
 
 ---
 
-## Paso 2: Actualizar el Repositorio Local
+## 2. Actualizar el Repositorio Local
 
-Si ya has clonado el repositorio anteriormente, es importante actualizar tu copia local con los últimos cambios del repositorio remoto.
-
-### Comando:
+Asegúrate de tener la última versión de `main`:
 
 ```bash
 git pull origin main
@@ -52,89 +41,99 @@ git pull origin main
 
 ---
 
-## Paso 3: Crear una Nueva Rama Basada en tu Nombre y Primer Apellido seguido del proposito de la rama
-
-Crear una nueva rama te permite trabajar en cambios específicos sin afectar la rama principal. En mi caso, sería "acarrasco" porque mi nombre es Álvaro Carrasco. <strong>No puede contener espacios.</strong> <br>
-
-Ten cuidado y primero copy el siguiente comando en un bloc de notas para escribir debidamente el nombre de la branch (rama)
-
-### Comando:
+## 3. Crear una Nueva Rama para Editar el README
 
 ```bash
-git checkout -b acarrasco/Edicion-del-archivo-README.md
+git checkout -b acarrasco/editar-readme
 ```
 
 ---
 
-## Paso 4: Realizar Cambios en los Archivos
+## 4. Realizar Cambios en el README
 
-Realiza los cambios necesarios en tu proyecto. Por ejemplo, editar el archivo README.md o eliminar valores nulos de un conjunto de datos. Cuando tengas los avances / cambios listos, continúa al siguiente paso.
+Edita el archivo `README.md` y añade o modifica contenido según sea necesario.
 
 ---
 
-## Paso 5: Preparar y Confirmar los Cambios
+## 5. Preparar y Confirmar los Cambios
 
-### Verificar y Preparar Todos los Cambios:
-
-Para ver qué archivos han cambiado:
+### Verificar los Cambios
 
 ```bash
 git status
 ```
 
-Para preparar todos los archivos para su subida:
+### Preparar los Cambios
 
 ```bash
-git add .
+git add README.md
 ```
 
-### Confirmar con un Mensaje Corto y Descriptivo:
+### Confirmar los Cambios con un Mensaje Descriptivo
 
 ```bash
-git commit -m "Eliminación de valores nulos"
-```
-
----
-
-## Paso 6: Hacer Push de la Nueva Rama
-
-Sube la nueva rama al repositorio remoto.
-
-### Comando:
-
-```bash
-git push -u origin acarrasco/Eliminacion-de-nulos-hecha
+git commit -m "Actualización del README: descripción mejorada y ejemplos añadidos"
 ```
 
 ---
 
-## Paso 7: Crear una Pull Request (PR), Solicitar Revisión y Hacer Merge a `main`
+## 6. Subir la Nueva Rama al Repositorio Remoto
 
-1. **Crear una Pull Request (PR)**: Ve a tu repositorio en GitHub y crea una PR desde `acarrasco/Eliminacion-de-nulos-hecha` hacia `main`.
-2. **Revisión de Código**: Espera a que otro colaborador revise tus cambios. Avisa a tus compañeros por el canal de comunicación que utilices para agilizar el proceso.
-3. **Hacer Merge**: Una vez aprobada la PR, realiza el merge a la rama `main`.
+```bash
+git push -u origin acarrasco/editar-readme
+```
+
+> **Nota**: Si aparece un error, verifica que el nombre de la rama sea correcto y que hayas creado la rama.
 
 ---
 
-## Paso 8: Cerrar la Rama
+## 7. Crear una Pull Request (PR)
 
-### Eliminar la Rama Local (Opcional):
-
-```bash
-git branch -d acarrasco/Eliminacion-de-nulos-hecha
-```
-
-### Eliminar la Rama Remota (Opcional):
+Crea una Pull Request para que tus cambios puedan ser revisados y mergeados a `main`.
 
 ```bash
-git push origin --delete acarrasco/Eliminacion-de-nulos-hecha
+gh pr create --base main --head acarrasco/editar-readme --title "Actualización del README" --body "He mejorado la descripción del proyecto y añadido ejemplos claros para facilitar su comprensión."
 ```
 
 ---
 
-## Paso 9: Actualizar la Rama `main` Antes de Comenzar Nuevos Trabajos
+### Verificar PR Abierta
 
-### Comandos:
+Para listar las Pull Requests abiertas:
+
+```bash
+gh pr list --state open
+```
+
+### Abrir la Pull Request en el Navegador
+
+```bash
+gh pr view 1 --web
+```
+
+---
+
+## 8. Cerrar la Rama una Vez Mergeada
+
+Una vez que la PR ha sido aprobada y mergeada, puedes eliminar la rama local y remota:
+
+### Eliminar la Rama Local
+
+```bash
+git branch -d acarrasco/editar-readme
+```
+
+### Eliminar la Rama Remota
+
+```bash
+git push origin --delete acarrasco/editar-readme
+```
+
+---
+
+## 9. Actualizar la Rama `main`
+
+Para asegurarte de tener la última versión de `main`:
 
 ```bash
 git checkout main
@@ -146,55 +145,36 @@ git pull origin main
 ## Resumen de Comandos
 
 ```bash
-# Clonar el repositorio
+# Clonar el repositorio y navegar al directorio
 git clone https://github.com/Wolfsteno/data-science-projects.git
-
-# Navegar al directorio del repositorio
 cd data-science-projects
 
-# Actualizar el repositorio local
-git pull origin main
-
 # Crear y cambiar a una nueva rama
-git checkout -b acarrasco/Eliminacion-de-nulos-hecha
+git checkout -b acarrasco/editar-readme
 
-# Realizar cambios...
+# Editar README.md...
 
-# Preparar todos los cambios
-git add .
-
-# Confirmar los cambios con un mensaje
-git commit -m "Eliminación de valores nulos"
+# Preparar y confirmar cambios
+git add README.md
+git commit -m "Actualización del README: descripción mejorada y ejemplos añadidos"
 
 # Subir la nueva rama al remoto
-git push -u origin acarrasco/Eliminacion-de-nulos-hecha
+git push -u origin acarrasco/editar-readme
 
-# Crear Pull Request y hacer merge a main
+# Crear una Pull Request con GitHub CLI
+gh pr create --base main --head acarrasco/editar-readme --title "Actualización del README" --body "He mejorado la descripción del proyecto y añadido ejemplos claros para facilitar su comprensión."
 
-# Eliminar la rama localmente
-git branch -d acarrasco/Eliminacion-de-nulos-hecha
+# Listar PRs abiertas
+gh pr list --state open
 
-# Eliminar la rama remotamente
-git push origin --delete acarrasco/Eliminacion-de-nulos-hecha
+# Ver la PR específica en el navegador
+gh pr view 1 --web
 
-# Cambiar a main y actualizar antes de nuevos trabajos
+# Eliminar la rama local y remota después del merge
+git branch -d acarrasco/editar-readme
+git push origin --delete acarrasco/editar-readme
+
+# Cambiar a main y actualizar
 git checkout main
 git pull origin main
-```
-
----
-
-## Consejos Adicionales
-
-### 1. Listar Todas las Ramas
-
-```bash
-git branch          # Lista ramas locales
-git branch -r       # Lista ramas remotas
-```
-
-### 2. Cambiar Entre Ramas
-
-```bash
-git checkout nombre-de-la-rama
 ```
