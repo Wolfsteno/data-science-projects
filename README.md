@@ -154,8 +154,9 @@ git checkout -b acarrasco/editar-readme
 
 # Editar README.md...
 
-# Preparar y confirmar cambios
-git add README.md
+
+git add README.md # Preparar y confirmar cambios
+git add . # Para añadir todos los cambios
 git commit -m "Actualización del README: descripción mejorada y ejemplos añadidos"
 
 # Subir la nueva rama al remoto
